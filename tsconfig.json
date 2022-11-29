@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "target": "ES2022",
+        "moduleResolution": "node",
+        "module": "None",
+        "strict": true
+    },
+    "include": [
+        "./*"
+    ]
+}

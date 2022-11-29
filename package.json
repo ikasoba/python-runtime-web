@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@types/wicg-file-system-access": "^2020.9.5",
+    "xterm": "^5.0.0",
+    "xterm-addon-fit": "^0.6.0"
+  }
+}
