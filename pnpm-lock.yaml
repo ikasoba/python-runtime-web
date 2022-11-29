@@ -6,6 +6,7 @@ specifiers:
   '@types/wicg-file-system-access': ^2020.9.5
   autoprefixer: ^10.4.12
   postcss: ^8.4.18
+  pyodide: link:src\pyodide
   solid-js: ^1.6.2
   solid-start: ^0.2.0
   solid-start-node: ^0.2.0
@@ -20,6 +21,7 @@ specifiers:
 dependencies:
   '@solidjs/meta': 0.28.2_solid-js@1.6.2
   '@solidjs/router': 0.5.1_solid-js@1.6.2
+  pyodide: link:src/pyodide
   solid-js: 1.6.2
   solid-start: 0.2.6_i2cnpwj3ojjdnkycik5yjsstli
   solid-start-static: 0.2.6_nvaxqqtfrbckibijm7chqimt7q
