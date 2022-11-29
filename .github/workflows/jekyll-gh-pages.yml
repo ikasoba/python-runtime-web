@@ -33,8 +33,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: latest
+      - name: install pnpm
+        run: npm i -g pnpm
       - name: install dependencies
-        run: npm i
+        run: pnpm i
       - name: build
         run: npm run build
       - name: Upload artifact
