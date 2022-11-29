@@ -13,7 +13,6 @@ export default function Home() {
     const handle = await showDirectoryPicker({
       mode: "readwrite"
     })
-    console.log(handle)
     const recursive = async(path: string, h: FileSystemDirectoryHandle | FileSystemFileHandle) => {
       console.log(path, h)
       if (h.kind == "file"){
