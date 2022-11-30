@@ -1,25 +1,25 @@
-import { createEffect, createSignal, JSX, Signal } from "solid-js";
-import { isServer } from "solid-js/web";
-import { Terminal } from "xterm";
+import { forwardRef } from "preact/compat";
+import { useEffect, useRef, useState } from "preact/hooks";
+import { JSXInternal } from "preact/src/jsx";
+import { ITerminalAddon, Terminal } from "xterm";
 import "xterm/css/xterm.css"
 
-export default function Term(prop: JSX.HTMLAttributes<HTMLDivElement> & {setTerm?: Signal<Terminal>[1]}) {
-  let termContainer: HTMLDivElement | undefined;
-  const setTerm = prop.setTerm
-  delete prop.setTerm
-  createEffect(async() => {if (!termContainer)return;
-    const {Terminal} = await import("xterm")
-    const {FitAddon} = await import("xterm-addon-fit")
-    const xterm = new Terminal()
-    const fitAddon = new FitAddon()
-    xterm.open(termContainer)
-    xterm.loadAddon(fitAddon)
-    fitAddon.fit()
-    window.addEventListener("resize", () => fitAddon.fit())
+export default forwardRef<Terminal, {addons?: ITerminalAddon[], attrs?: JSXInternal.HTMLAttributes<HTMLDivElement>}>(function Term(prop, ref){
+  const rootRef = useRef<HTMLDivElement>(null)
+  const [terminal, _] = useState<Terminal>(new Terminal())
 
-    setTerm?.(xterm)
-  })
+  useEffect(() => {
+    if (!rootRef.current)return;
+    terminal.open(rootRef.current)
+    prop.addons?.forEach(x => terminal.loadAddon(x))
+    if (typeof ref == "function"){
+      ref(terminal)
+    }else if (ref){
+      ref.current = terminal
+    }
+  }, [])
+
   return (
-    <div {...prop} ref={termContainer}></div>
-  );
-}
+    <div {...prop.attrs} ref={rootRef}></div>
+  )
+})

@@ -33,6 +33,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: latest
+          cache: pnpm
       - name: install pnpm
         run: npm i -g pnpm
       - name: install dependencies
@@ -42,7 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: dist/public
+          path: dist/
 
   # Deployment job
   deploy:
