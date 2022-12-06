@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { loadPyodide, PyodideInterface } from "../pyodide";
+import { loadPyodide, PyodideInterface } from "../pyodide/";
 
 type ExtractArgs<F extends (...a:any[])=>any> = F extends (...a: infer T) => any ? T : never
 

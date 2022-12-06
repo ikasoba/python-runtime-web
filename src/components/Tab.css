@@ -1,0 +1,25 @@
+.Tab-wrapper {
+  background-color: hsl(248, 10%, 65%);
+}
+
+.Tab-wrapper-parent {
+  background-color: hsl(248, 10%, 65%)
+}
+
+.Tab {
+  background-color: hsl(248, 53%, 58%);
+  color: white;
+  padding: 0.25rem;
+  cursor: pointer;
+  overflow-x: scroll;
+  max-width: 100%;
+}
+
+.Tab span {
+  pointer-events: none;
+}
+
+.Tab:has(input:checked) {
+  filter: brightness(0.75);
+  cursor: default;
+}

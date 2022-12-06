@@ -17,6 +17,10 @@ export default forwardRef<Terminal, {addons?: ITerminalAddon[], attrs?: JSXInter
     }else if (ref){
       ref.current = terminal
     }
+
+    return () => {
+      terminal.dispose()
+    }
   }, [])
 
   return (
